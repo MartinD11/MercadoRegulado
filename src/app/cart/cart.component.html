@@ -1,0 +1,27 @@
+<h3>Cart</h3>
+<ul class="w-100 ps-0 ms-0">
+    @for (item of cartList$ | async; track $index) {
+    <li class="border-bottom border-2 list-unstyled mb-2">
+        <div>
+          {{item.name}}
+          <img [src]="item.image" alt="{{item.name}}" width="100">
+        </div>
+        <div>
+          <span>Cantidad:</span>
+          {{item.quantity}}
+        </div>
+    </li>
+}
+</ul>
+ <!--no pude usar las directivas nuevas porque me falla a la hora de obtener el valor del observable -->
+<div *ngIf="cartList$ | async as cartList">
+  <p *ngIf="cartList.length > 0">
+    Total: {{ getTotal(cartList) | currency }}
+  </p>
+  <div>
+    @if(cartList.length>0){
+        <button (click)="vaciarCarrito()" class="btn btn-primary mb-2">Comprar</button>
+    }
+</div>
+</div>
+

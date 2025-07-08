@@ -1,0 +1,27 @@
+<div class="form-container">
+    <form [formGroup]="formInventory" (submit)="onSubmit()">
+  <div>
+    <label for="name">Producto</label>
+    <input type="text" formControlName="name" id="name">
+  </div>
+  <div>
+    <label for="category">Categoría</label>
+    <input type="text" formControlName="category" id="category">
+  </div>
+  <div>
+    <label for="price">Precio</label>
+    <input type="number" formControlName="price" id="price">
+  </div>
+  <div>
+    <label for="image">Imagen</label>
+    <input type="text" formControlName="image" id="image" placeholder="Agregar URL">
+  </div>
+  <div>
+    <label for="quantity">Cantidad</label>
+    <input type="number" formControlName="quantity" id="quantity">
+  </div>
+  <button type="submit" [disabled]="formInventory.invalid">Agregar</button>
+</form>
+</div>
+
+

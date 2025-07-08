@@ -1,0 +1,57 @@
+<h3>Productos disponibles</h3>
+<table class="text-center table">
+    <thead>
+        <tr>
+            <th>nombre</th>
+            <th>categoria</th>
+            <th>precio</th>
+            <th>Stock</th>
+            <th>imagen</th>
+            <th>cantidad</th>
+            <th>comprar</th>
+        </tr>
+    </thead>
+    <tbody>
+    <!--no pude usar las directivas nuevas porque no me dejaba realizar el two way databinding -->
+  <tr *ngFor="let product of products;" [class.clearance]="product.clearance">
+    <td>{{ product.name }}</td>
+    <td>{{ product.category }}</td>
+    <td>{{ product.price | currency }}</td>
+
+    <td *ngIf="product.stock > 0; else sinStock">
+      {{ product.stock }}
+    </td>
+    <ng-template #sinStock>
+      <td><span class="badge bg-warning text-dark">SIN STOCK</span></td>
+    </ng-template>
+
+    <td>
+      <img [src]="product.image" [alt]="product.name" width="100" />
+    </td>
+
+    <td>
+      <app-input-integer
+        [(quantity)]="product.quantity"
+        [max]="product.stock" (maxReached)="maxReached($event)">
+      </app-input-integer>
+      <span>Cantidad: {{product.quantity}}</span>
+    </td>
+    <td>
+      <button class="btn btn-primary" (click)="addToCart(product)">Add</button>
+    </td>
+  </tr>
+
+  <tr *ngIf="products.length === 0">
+    <td colspan="6">No hay productos</td>
+  </tr>
+
+  <div class="modal-backdrop" *ngIf="showModal">
+  <div class="modal-content">
+    <h4 class="modal-title">Atención</h4>
+    <p>{{ modalMessage }}</p>
+    <button class="btn btn-danger" (click)="closeModal()">Cerrar</button>
+  </div>
+</div>
+</tbody>
+
+</table>

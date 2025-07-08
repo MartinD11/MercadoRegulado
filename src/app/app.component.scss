@@ -1,0 +1,30 @@
+.contenedor-general{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+}
+
+img {
+    width: 150px;
+    height: 68px;
+    border: 2px solid rgb(255, 255, 0);
+}
+
+nav {
+    background-color: #ffe600;
+}
+
+
+.container {
+  width: 100%;
+}
+
+
+footer {
+  display: flex;
+  background-color: #ffe600;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 0px;
+}
+
