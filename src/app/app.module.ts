@@ -13,6 +13,7 @@ import {HttpClient,HttpClientModule} from  '@angular/common/http';
 import { InventoryComponent } from './inventory/inventory.component';
 import { FormControlProductsComponent } from './form-control-products/form-control-products.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,7 @@ import { FormControlProductsComponent } from './form-control-products/form-contr
     CartComponent,
     InputIntegerComponent,
     InventoryComponent,
-    FormControlProductsComponent
+    FormControlProductsComponent,
   ],
   imports: [
     BrowserModule,
